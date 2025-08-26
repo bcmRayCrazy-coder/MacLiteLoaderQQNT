@@ -3,6 +3,7 @@ require("./loader_core/plugin_loader.js");
 
 const { MainLoader } = require("./loader_core/main.js");
 const { protocolRegister } = require("./protocol_scheme/main.js");
+const { resourcesPath } = require('./pathConfig.json');
 const path = require("path");
 
 
@@ -62,6 +63,6 @@ require.cache["electron"] = new Proxy(require.cache["electron"], {
 
 if (!globalThis.qwqnt) {
     const main_path = "./application.asar/app_launcher/index.js";
-    require(require("path").join(process.resourcesPath, "app", main_path));
+    require(require("path").join(resourcesPath, "app", main_path));
     setImmediate(() => global.launcher.installPathPkgJson.main = main_path);
 }
